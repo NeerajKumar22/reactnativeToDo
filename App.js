@@ -11,7 +11,9 @@ import {
 
 import Header from "./components/header";
 import TodoItem from "./components/todoitem";
-import AddTodo from "./components/addTodo"
+import AddTodo from "./components/addTodo";
+//import Sandbox from "./components/sandbox";
+
 export default function App() {
   const [todos, setTodos] = useState([
     {text: "buy coffee", key: "1"},
@@ -41,26 +43,27 @@ export default function App() {
   }
 
   return (
-    <TouchableWithoutFeedback onPress={() => {
-      Keyboard.dismiss();
-      console.log("Dismissed Keyboard")
-    }}>
-      <View style={styles.container}>
-        <Header />
-        <View style={styles.content}>
-          <AddTodo submitHandler={submitHandler} />
-          <View style={styles.list}>
-            <FlatList
-              data={todos}
-              renderItem={({item}) => (
-                <TodoItem item={item} pressHandler={pressHandler}/>
-              )
-              }
-            />
-          </View>
-        </View>
-      </View>
-    </TouchableWithoutFeedback>
+//    <Sandbox />
+   <TouchableWithoutFeedback onPress={() => {
+     Keyboard.dismiss();
+     console.log("Dismissed Keyboard")
+   }}>
+     <View style={styles.container}>
+       <Header />
+       <View style={styles.content}>
+         <AddTodo submitHandler={submitHandler} />
+         <View style={styles.list}>
+           <FlatList
+             data={todos}
+             renderItem={({item}) => (
+               <TodoItem item={item} pressHandler={pressHandler}/>
+             )
+             }
+           />
+         </View>
+       </View>
+     </View>
+   </TouchableWithoutFeedback>
   );
 }
 
@@ -71,8 +74,10 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 40,
+    flex: 1,
   },
   list: {
+    flex: 1,
     marginTop: 20,
   }
 });
